@@ -1,8 +1,16 @@
-.root div {
+body {
+
+}
+#root div {
     display: flex;
-    align-content: center;
+}
+
+.main div {
+    flex-direction: column;
 }
 .text div {
     border: 2px solid black;
-    display: flex;
+}
+.main__2 div {
+    flex-wrap: wrap;
 }
