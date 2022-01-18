@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import "../Spase/index.css"
 
 const Spases = () => {
     const [spases,setSpases] = useState([])
