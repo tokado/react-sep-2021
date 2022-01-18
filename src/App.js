@@ -1,13 +1,11 @@
-import Simpsons from "./components/Simpsons/Simpsons";
-import Simpson from "./components/Simpson/Simpson";
-import Users from "./components/Users/Users";
-import Spases from "./Spases/Spases";
+
+import Spases from "./components/Spases/Spases";
 
 const App = () => {
     return (
-       // <Simpson/>
-       // <Users/>
-        <Spases/>
+        <div className={'main'}>
+          <Spases/>
+        </div>
     );
 };
 
