@@ -2,7 +2,9 @@
     display: flex;
     align-content: center;
 }
-.text div {
-    border: 2px solid black;
-    display: flex;
+.main__user div {
+}
+.btn button {
+    width: 50%;
+    flex-direction: row;
 }

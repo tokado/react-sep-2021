@@ -1,11 +1,11 @@
-
 import {useEffect, useState} from "react";
 import User from "../User/User";
-import Post from "../Post/Post";
-import Comment from "../Comment/Comment";
 
 const Users = () => {
     const [users,setUsers] = useState([])
+
+    const [user,setUser] = useState(null)
+    const [post,setPost] = useState(null)
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -13,27 +13,26 @@ const Users = () => {
             .then(value => setUsers(value))
     }, [])
 
-    const [posts,setPosts] = useState([])
-
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
+    const getUserID = (id) => {
+        fetch('https://jsonplaceholder.typicode.com/users/' + id)
             .then(value => value.json())
-            .then(value => setPosts(value))
-    }, [])
-
-    const [comments,setComments] = useState([])
-
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/comments')
+            .then(value => setUser(value))
+    }
+    const getPostID = (id) => {
+        fetch('https://jsonplaceholder.typicode.com/posts/' + id)
             .then(value => value.json())
-            .then(value => setComments(value))
-    }, [])
+            .then(value => setPost(value))
+    }
+
 
     return (
         <div>
-            {users.map(value=> <User key={value.id} name={value.name}/>)}
-            {posts.map(value=> <Post title={value.title}/>)}
-            {comments.map(value=> <Comment body={value.body}/>)}
+
+            {users.map(value=> <User key={value.id} user={value} getUserId={getUserID} getPostId={getPostID}/>)}
+            <hr/>
+            {user && <div>{user?.id}.{user?.name}__{user?.email}__{user?.username}__{user?.address.street}__{user?.address.suite}__{user?.address.city}__{user?.address.zipcode}__{user?.phone}__{user?.website}</div>}
+            <hr/>
+            {post && <div>Posts:{post?.id}.{post?.title}</div>}
         </div>
     );
 };

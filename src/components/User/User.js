@@ -1,11 +1,15 @@
 import "./index.css"
 
-const User = (props) => {
-    const {name} = props;
+const User = ({user:{id,name,email}, getUserId, getPostId} ) => {
+
 
     return (
         <div className={"text"}>
-            <div>name: {name}</div>
+            <div>{id}.{name}__{email}</div>
+            <div className={'btn'}>
+            <button onClick={() => getUserId(id) }>getInformation</button>
+            <button onClick={() => getPostId(id) }>getPosts</button>
+            </div>
         </div>
     );
 };
