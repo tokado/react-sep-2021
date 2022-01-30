@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
-import User from "../User/User";
+import UserPosts from "./UsersPosts";
 
-const Users = () => {
+const UserPost = () => {
     const [users,setUsers] = useState([])
 
     const [user,setUser] = useState(null)
@@ -18,12 +18,17 @@ const Users = () => {
             .then(value => value.json())
             .then(value => setUser(value))
     }
+    const getPostID = (id) => {
+        fetch('https://jsonplaceholder.typicode.com/posts/' + id)
+            .then(value => value.json())
+            .then(value => setPost(value))
+    }
 
 
     return (
         <div>
 
-            {users.map(value=> <User key={value.id} user={value} getUserId={getUserID}/>)}
+            {users.map(value=> <UserPosts key={value.id} user={value} getUserId={getUserID} getPostId={getPostID}/>)}
             <hr/>
             {user && <div>{user?.id}.{user?.name}__{user?.email}__{user?.username}__{user?.address.street}__{user?.address.suite}__{user?.address.city}__{user?.address.zipcode}__{user?.phone}__{user?.website}</div>}
             <hr/>
@@ -32,4 +37,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default UserPost;

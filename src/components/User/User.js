@@ -1,11 +1,13 @@
 import "./index.css"
 
-const User = (props) => {
-    const {name} = props;
+const User = ({user:{id,name,email}} ) => {
+
 
     return (
         <div className={"text"}>
-            <div>name: {name}</div>
+            <div>{id}.{name}<br/>Gmail:{email}</div>
+            <div className={'btn'}>
+            </div>
         </div>
     );
 };
